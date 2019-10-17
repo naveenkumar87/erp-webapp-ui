@@ -1,0 +1,197 @@
+<div *blockUI="">
+<div class="ui-g title mt5">
+	{{ title }}	
+</div>
+<HR />
+<p-messages [(value)]="msgs"></p-messages>
+<form (submit)="saveParty()" #partyForm="ngForm" >
+	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+	  		<div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Name *:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Name" name="name" [(ngModel)] ="party.name" required/>
+                    </div>
+                   <div class="ui-grid-col-1 flabel">
+                        Pan No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Pan No" name="panNo" [(ngModel)] ="party.panNo" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        Vat No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Vat No" name="vatNo" [(ngModel)] ="party.vatNo" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        CST No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="CST No" name="cstNo" [(ngModel)] ="party.cstNo" />
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Tan No :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Tan No" name="tanNo" [(ngModel)] ="party.tanNo"/>
+                    </div>
+                   <div class="ui-grid-col-1 flabel">
+                        Brokerage :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Brokerage" name="brokerage" [(ngModel)] ="party.brokerage" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        CIN No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="CIN No" name="cinNo" [(ngModel)] ="party.cinNo" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        GST No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="GST No" name="gstNo" [(ngModel)] ="party.gstNo" />
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Address :
+                    </div>
+                    <div class="ui-grid-col-2">
+                    	<textarea [rows]="3" [cols]="10" placeholder="Address" name="address" pInputTextarea autoResize="autoResize" [(ngModel)] ="party.address"></textarea>
+
+                       <!--  <input pInputText type="text" placeholder="Address" name="name" [(ngModel)] ="party.name" required/> -->
+                    </div>
+                   <div class="ui-grid-col-1 flabel">
+                        Area :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Area" name="area" [(ngModel)] ="party.area" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        City :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="City" name="city" [(ngModel)] ="party.city" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        State :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="State" name="state" [(ngModel)] ="party.state" />
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Country :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Country" name="country" [(ngModel)] ="party.country"/>
+                    </div>
+                   <div class="ui-grid-col-1 flabel">
+                        PIN Code :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="PIN Code" name="pinCode" [(ngModel)] ="party.pinCode" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        Tel No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Tel No" name="telNo" [(ngModel)] ="party.telNo" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        Mob No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Mob No" name="mobNo" [(ngModel)] ="party.mobNo" />
+                    </div>
+                </div>
+                
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Email :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="email" pKeyFilter="email" placeholder="Email" name="email" [(ngModel)] ="party.email"/>
+                    </div>
+                   <div class="ui-grid-col-1 flabel">
+                        Pay Term :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Pay Term" name="payterm" [(ngModel)] ="party.payterm" />
+                    </div>
+                    <div class="ui-grid-col-1 flabel">
+                        HSN Code:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="HSN Code" name="hsnCode" [(ngModel)] ="party.hsnCode" />
+                    </div>
+                   
+                </div>
+	               
+            </div>
+
+
+
+	<HR />
+	<div clas="ui-g">
+		<button pButton type="submit" label="Save Party" [disabled]="partyForm.invalid || loading" class="ui-button-raised ui-button-success mr10"></button>
+		<button pButton type="button" label="Cancel" (click)="navigate('master/party')" class="ui-button-raised ui-button-secondary"></button>
+
+        <button pButton type="button" *ngIf="!isEdit" label="Reset" (click)="partyForm.reset()" class="ui-button-raised ui-button-info reset-btn"></button>
+	</div>
+</form>
+
+<p-card *ngIf="isEdit" class="mt20">
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-4 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		By
+    	</div>
+    	<div class="ui-grid-col-4 p5 bold">
+    		On
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Created
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ party.created_by }}
+    	</div>
+    	<div class="ui-grid-col-4 p5">
+    		{{ party.created_at }}
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Modified
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ party.updated_by }}
+    	</div>
+    	<div class="ui-grid-col-4 p5">
+    		{{ party.updated_at }}
+    	</div>
+    </div>
+</p-card>
+
+
+</div>

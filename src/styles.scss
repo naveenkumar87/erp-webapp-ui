@@ -1,0 +1,200 @@
+/* You can add global styles to this file, and also import other style files */
+.router-card > .ui-card{
+	background-color: rgb(250,250,250,0.6);
+}
+
+.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.red{
+	color: rgba(255,0,0,0.9);
+}
+.mtop10{
+	margin-top: 10px;
+}
+body{
+	line-height: 1.0
+}
+
+.right{
+	text-align: right;
+}
+.fright{
+	float: right;
+}
+.f13{
+	font-size: 13px;
+}
+
+.ui-grid.ui-grid-pad>.ui-grid-row>div {
+    padding: .15em .3em;
+}
+
+.app-container .router-card > div > div.ui-card-body > div.ui-card-content{
+	min-height: 470px;
+	max-height: 490px;
+	overflow-x: auto;
+}
+
+p-dropdown .ui-dropdown{
+	height: 33px;
+    padding-top: 3px;
+}
+
+.nopad-tb{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.reset-btn{
+	margin-left: 20px !important;
+}
+
+.required{
+	color:rgba(255, 0, 0, 0.5);
+}
+
+/*body .ui-button.ui-state-default.ui-button-secondary, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default{
+	color: white;
+    background-color: rgba(30,30,30,1);
+}*/
+
+
+.ui-table-tbody> tr> td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.bold{
+	font-weight: bold;
+}
+.italic{
+	font-style: italic;
+}
+.msg-font{
+	font-size: 12px;
+}
+.p5{
+	padding: 5px;
+}
+.pt10{
+	padding-top: 10px;
+}
+.p10{
+	padding: 10px;
+}
+
+.ml10{
+	margin-left:10px;
+}
+.mr10{
+	margin-right:10px;
+}
+.pl10{
+	padding-left:10px;
+}
+.pr10{
+	padding-right:10px;
+}
+.ml20{
+	margin-left:20px;
+}
+.mr20{
+	margin-right:20px;
+}
+.mt20 > div{
+	margin-top:20px;	
+}
+.center{
+	text-align: center;
+}
+
+.alert{
+	margin-bottom: 0px;
+}
+.bs-close{
+	margin-top: -4px;
+}
+
+.title{
+	color: #5c666a;
+    font-weight: 700;
+}
+.mt5{
+	margin-top: 5px;
+}
+.mb5{
+	margin-bottom: 5px;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mb10{
+	margin-bottom: 10px;
+}
+
+hr{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.flabel{
+	padding-top: 12px !important;
+    color: rgba(0,0,0,0.6);
+    font-weight: bold;
+}
+body .pi {
+    font-size: 1.0em;
+}
+
+.ui-button{
+	margin-right: 10px !important;
+}
+
+.headerBtn .ui-button{
+	margin-right: 0px !important;	
+}
+
+.block-ui-wrapper{
+	background: rgba(130, 130, 130, 0.4) !important;	
+}
+
+.delete-icon-container{
+	cursor:pointer;
+}
+
+.small-inp{
+	font-size: 12px !important;
+	padding: 0.229em !important;
+}
+
+.small-inp input{
+	font-size: 12px !important;
+	padding: 0.229em !important;
+}
+
+.small-btn{
+	font-size: 12px !important;
+}
+.small-btn span{
+	padding: .25em 1em !important;
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+
+@media screen and (max-width: 1240px) {
+  body .ui-widget, body .ui-inputtext, body .ui-button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  body .ui-widget, body .ui-inputtext, body .ui-button {
+    font-size: 12px;
+  }
+}

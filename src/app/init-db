@@ -1,0 +1,8 @@
+
+insert into users (name, user_name, password, email, created_at)
+values
+('admin', 'admin', '0cc175b9c0f1b6a831c399e269772661', 'naveen.ara@gmail.com', CURDATE())
+
+
+
+select * from USERS this_ where ( this_.deleted <> '1') and this_.USER_NAME='admin' and this_.PASSWORD='0cc175b9c0f1b6a831c399e269772661'

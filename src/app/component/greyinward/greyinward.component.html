@@ -1,0 +1,92 @@
+<p-toast [style]="{marginTop: '35px'}" position="top-right"></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<!-- <p-toast></p-toast> -->
+
+<div class="ui-g">
+	<div class="ui-g-6 nopad-tb">
+		<p-button (click)="navigate('core/greyinward/create')" icon="pi pi-plus" label="New Grey Inward" ></p-button>
+		<button pButton type="button" (click)="return" [disabled]="!selectedRecord" label="Print" class="ui-button-danger" icon="pi pi-print">
+		</button>
+
+		<button pButton type="button" (click)="clone()" [disabled]="!selectedRecord" label="Clone" class="ui-button-success" icon="pi pi-clone">
+		</button>
+	</div>	
+</div>
+
+<div class="ui-g" *ngIf="isError">
+	<div class="ui-g-12">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		  {{ errorMessage }}
+		   <button type="button" class="close bs-close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+		   </button>
+		</div>
+	</div>
+</div>
+
+<div class="ui-g">
+	<div class="ui-g-12">
+		
+	<p-table #dt [columns]="cols" [value]="greyinwardList" [lazy]="true" (onLazyLoad)="loadGreyInwardLazy($event)" [paginator]="true"  [style]="{width:'100%'}" 
+	    [rows]="10" [totalRecords]="totalRecords" [loading]="loading" [resizableColumns]="true"
+	    [reorderableColumns]="true" [scrollable]="true" selectionMode="single"
+	    [(selection)]="selectedRecord" dataKey="id" *ngIf="gridVisible">
+
+	    <ng-template pTemplate="caption">
+	        <div style="text-align: right">        
+	            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+	            <input type="text" pInputText size="50" placeholder="Search" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+	        </div>
+	    </ng-template>
+
+	    <ng-template pTemplate="colgroup" let-columns>
+	        <colgroup>
+	        	<col style="width:4em">
+	            <col *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+	        </colgroup>
+	    </ng-template>
+
+	    <ng-template pTemplate="header" let-columns>
+	        <tr>
+	        	<th style="width:4em">Edit</th>
+	            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}" pReorderableColumn pResizableColumn>
+	                {{col.header}}
+	                <p-sortIcon [field]="col.field"></p-sortIcon>
+	            </th>
+	            
+	        </tr>
+	    </ng-template>
+	    <ng-template pTemplate="body" let-rowData let-columns="columns">
+	        <tr [pSelectableRow]="rowData" (dblclick)="editGreyInward(rowData.id)">
+	        	<td style="width:3em" class="delete-icon-container">
+	            	<i class="fa fa-edit" (click)="editGreyInward(rowData.id)"></i>  
+	            </td>
+	            <td *ngFor="let col of columns" title="{{rowData[col.field]}}" class="ui-resizable-column">
+	            	<span *ngIf="col.field.indexOf('.') == -1;else other_content">
+						{{rowData[col.field]}}
+					</span>
+
+					<ng-template #other_content>
+						<span *ngIf="rowData[col.path]">							
+							{{rowData[col.path]['name']}}
+						</span>
+						<!-- 
+						{{rowData[col.path]['name']}} -->
+					</ng-template>
+	                
+	            </td>
+	            
+	        </tr>
+	    </ng-template>
+	    <ng-template pTemplate="emptymessage" let-columns>
+	        <tr>
+	            <td [attr.colspan]="columns.length + 1" class="center">
+	                No records found
+	            </td>
+	        </tr>
+	    </ng-template>
+	</p-table>
+
+
+	</div>
+</div>

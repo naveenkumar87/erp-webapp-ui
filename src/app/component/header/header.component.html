@@ -1,0 +1,7 @@
+<p-menubar [model]="menuitems">
+	
+	<input type="text" pInputText placeholder="Search">
+    <!-- <button pButton label="Logout" icon="fa fa-sign-out" (click)="signout()" style="margin-left: 0.25em"></button> -->
+    <p-splitButton label="Logout" icon="fa fa-sign-out" (onClick)="signout()" [model]="profileOptions" styleClass="ui-button-info" class="ml10 headerBtn"></p-splitButton>
+
+</p-menubar>

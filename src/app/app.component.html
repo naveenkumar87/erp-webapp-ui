@@ -1,0 +1,31 @@
+<div *ngIf="loggedIn">
+
+	<div class="ui-g">
+
+		<div class="ui-g-1 ui-sm-1 ui-md-1 ui-lg-1">
+			
+		</div>
+
+		<div class="ui-g-10 ui-sm-10 ui-md-10 ui-lg-10 app-container">
+			<p-card class="router-card">
+			    <p-header>
+			        <app-header></app-header>
+			    </p-header>
+			    	<router-outlet></router-outlet>
+			    <p-footer>
+			       2019
+			    </p-footer>
+			</p-card>
+
+		</div>
+
+		<div class="ui-g-1 ui-sm-1 ui-md-1 ui-lg-1">
+			
+		</div>
+	</div>	
+		
+</div>
+
+<div *ngIf="!loggedIn">
+		<app-login></app-login>
+</div>

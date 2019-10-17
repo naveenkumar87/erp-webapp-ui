@@ -1,0 +1,67 @@
+<p-toast [style]="{marginTop: '80px'}" position="top-right" key="tc"></p-toast>
+
+<div class="ui-g">
+	<div class="ui-g-6 nopad-tb">
+		<p-button (click)="navigate()" icon="pi pi-plus" label="New {{master.title}}"></p-button>
+	</div>	
+</div>
+
+<div class="ui-g" *ngIf="isError">
+	<div class="ui-g-12">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		  {{ errorMessage }}
+		   <button type="button" class="close bs-close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+		   </button>
+		</div>
+	</div>
+</div>
+
+<div class="ui-g">
+	<div class="ui-g-12">
+		
+	<p-table #dt [columns]="cols" [value]="masterList" [lazy]="true" (onLazyLoad)="loadDataLazy($event)" [paginator]="true" 
+	    [rows]="10" [totalRecords]="totalRecords" [loading]="loading" [resizableColumns]="true"
+	    [reorderableColumns]="true" *ngIf="visible">
+
+	    <ng-template pTemplate="caption">
+	        <div style="text-align: right">        
+	            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+	            <input type="text" pInputText size="50" placeholder="Search" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+	        </div>
+	    </ng-template>
+
+
+	    <ng-template pTemplate="header" let-columns>
+	        <tr>
+	        	<th style="width:4em">Edit</th>
+	            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}" pReorderableColumn pResizableColumn>
+	                {{col.header}}
+	                <p-sortIcon [field]="col.field"></p-sortIcon>
+	            </th>
+	            
+	        </tr>
+	    </ng-template>
+	    <ng-template pTemplate="body" let-rowData let-columns="columns">
+	        <tr (dblclick)="edit(rowData.id)">
+	        	<td style="width:3em" class="delete-icon-container">
+	            	<i class="fa fa-edit" (click)="edit(rowData.id)"></i>  
+	            </td>
+	            <td *ngFor="let col of columns" class="ui-resizable-column" title="{{rowData[col.field]}}">
+	                {{rowData[col.field]}}
+	            </td>
+	            
+	        </tr>
+	    </ng-template>
+	    <ng-template pTemplate="emptymessage" let-columns>
+	        <tr>
+	            <td [attr.colspan]="columns.length + 1" class="center">
+	                No records found
+	            </td>
+	        </tr>
+	    </ng-template>
+	</p-table>
+
+
+	</div>
+</div>

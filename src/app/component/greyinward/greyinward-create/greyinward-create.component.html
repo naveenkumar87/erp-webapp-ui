@@ -1,0 +1,191 @@
+<div *blockUI="">
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+<div class="ui-grid-row title mt5">
+	<div class="ui-grid-col-2" [ngClass]="!isEdit?'pt10':null">
+		
+		{{ title }}	
+	</div>
+	<div class="ui-grid-col-10 right" *ngIf="!isEdit">
+		<!-- <input pInputText type="text" placeholder="Serial No" name="serialNoCopy" 
+		[(ngModel)] ="serialNoCopy" class="small-inp mr10" /> -->
+		<p-autoComplete [(ngModel)]="serialNoCopy" name="serialNoCopy" [suggestions]="serialNos" placeholder="Serial No" (completeMethod)="searchSerialNo($event)" class="small-inp mr10"></p-autoComplete>
+		<button pButton type="button" label="Copy" class="small-btn no-margin ui-button-danger"
+		[disabled]="!serialNoCopy" (click)="copyGreyInward()"></button>
+	</div>
+</div>
+<HR />
+<p-messages [(value)]="msgs"></p-messages>
+<form (submit)="saveGreyInward()" #giForm="ngForm" >
+	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+	  			<div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Serial No <span class="required">*</span>:
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText type="text" placeholder="Serial No" name="serialNo" [(ngModel)] ="greyInward.serialNo" [disabled]="true" required/>
+	                    </div>
+	                    <div class="ui-grid-col-1"></div>
+	                    <div class="ui-grid-col-2 flabel">
+	                        Voucher No <span class="required">*</span>:
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText pKeyFilter="int" type="text" name="voucherNo" [(ngModel)] ="greyInward.voucherNo" placeholder="Voucher No" required/>
+	                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Bilty No <span class="required">*</span>:
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText type="text" placeholder="Bilty No" name="biltyNo" [(ngModel)] ="greyInward.biltyNo" required/>
+	                    </div>
+	                    <div class="ui-grid-col-1"></div>
+	                    <div class="ui-grid-col-2 flabel">
+	                        Bales :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText pKeyFilter="int" type="text" name="bales" [(ngModel)] ="greyInward.bales" placeholder="Bales" />
+	                    </div>
+                </div>
+	                
+	            <div class="ui-grid-row">
+                        <div class="ui-grid-col-2 flabel">
+	                        Party <span class="required">*</span>:
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <p-autoComplete [(ngModel)]="greyInward.party" name="parties" [suggestions]="parties" placeholder="Party" (completeMethod)="searchParty($event)" field="name" required></p-autoComplete>
+
+	                    </div>
+	                    <div class="ui-grid-col-1" style="padding-top: 12px">
+                    		<a href="#" class="search-icon" (click)="searchPartyDialog()" pTooltip="Search Party">
+						        <i class="fa fa-search"></i>
+						    </a>
+
+	                    </div>
+	                    <div class="ui-grid-col-2 flabel">
+	                        Transport :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <p-dropdown [options]="transports" name="transport" [(ngModel)]="greyInward.transport" placeholder="Select a Transport" optionLabel="name" [showClear]="true"></p-dropdown>
+	                    </div>
+
+                </div> 
+
+                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Lot No <span class="required">*</span>:
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText type="text" placeholder="Lot No" name="lotNo" [(ngModel)] ="greyInward.lotNo" required/>
+	                    </div>
+	                    <div class="ui-grid-col-1"></div>
+	                    <div class="ui-grid-col-2 flabel">
+	                        Quality :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+
+	                    	<p-dropdown [options]="qualities" name="quality" [(ngModel)]="greyInward.quality" placeholder="Select a Quality" optionLabel="name" [showClear]="true"></p-dropdown>
+
+	                        <!-- <p-autoComplete [(ngModel)]="greyInward.quality" name="quality" [suggestions]="qualities" (completeMethod)="searchQuality($event)" field="name"></p-autoComplete> -->
+	                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+	                    
+	                    <div class="ui-grid-col-2 flabel">
+	                        Length :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                    	<div class="ui-grid-col-7">
+	                        	<input pInputText pKeyFilter="pnum" type="text" name="length" [(ngModel)] ="greyInward.length" placeholder="Length" />
+	                    	</div>
+	                    	<div class="ui-grid-col-1">&nbsp;</div>
+	                    	<div class="ui-grid-col-4">
+	                        	<p-dropdown [options]="units" name="unit" [(ngModel)]="greyInward.unit" placeholder="Unit" optionLabel="name" [showClear]="true"></p-dropdown>
+	                    	</div>
+	                    </div>
+	                    <div class="ui-grid-col-1"></div>
+	                    <div class="ui-grid-col-2 flabel">
+	                        Than :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText type="text" placeholder="Than" name="than" [(ngModel)] ="greyInward.than"/>
+	                    </div>
+                </div>
+
+
+                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Note/P.Marka :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <textarea [rows]="3" [cols]="10" placeholder="Notes" name="notes" pInputTextarea autoResize="autoResize" [(ngModel)] ="greyInward.notes"></textarea>
+	                    </div>
+
+	                    <div class="ui-grid-col-1"></div>
+
+	                    <div class="ui-grid-col-2 flabel">
+	                        TP :
+	                    </div>
+	                    <div class="ui-grid-col-3">
+	                        <input pInputText type="text" pKeyFilter="pnum" placeholder="TP" name="tp" [(ngModel)] ="greyInward.tp"/>
+	                    </div>
+	                    
+                </div>
+
+    </div>
+
+	<HR />
+	<div clas="ui-g">
+		<button pButton type="submit" label="Save Grey Inward" [disabled]="giForm.invalid || loading" class="ui-button-raised ui-button-success mr10"></button>
+		<button pButton type="button" label="Cancel" (click)="navigate('core/greyinward')" class="ui-button-raised ui-button-secondary"></button>
+
+		<!-- <button pButton type="button" *ngIf="!isEdit" label="Reset" (click)="giForm.reset(); greyInward.serialNo = tempSerialNo" class="ui-button-raised ui-button-info reset-btn"></button> -->
+	</div>
+</form>
+
+<p-card *ngIf="isEdit" class="mt20">
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-4 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		By
+    	</div>
+    	<div class="ui-grid-col-4 p5 bold">
+    		On
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Created
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ greyInward.created_by }}
+    	</div>
+    	<div class="ui-grid-col-4 p5">
+    		{{ greyInward.created_at }}
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Modified
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ greyInward.updated_by }}
+    	</div>
+    	<div class="ui-grid-col-4 p5">
+    		{{ greyInward.updated_at }}
+    	</div>
+    </div>
+</p-card>
+
+
+</div>

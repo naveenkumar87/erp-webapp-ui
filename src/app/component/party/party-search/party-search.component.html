@@ -1,0 +1,175 @@
+<p-messages [(value)]="msgs"></p-messages>
+<form (submit)="searchParty()" #partySearchForm="ngForm" style="min-height: 380px; max-height: 380px;">
+	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		<div *ngIf="showResult">
+			
+			<p-table [columns]="cols" [value]="parties" [paginator]="true" [rows]="8"
+				[style]="{width:'100%'}" [resizableColumns]="true"
+	    [reorderableColumns]="true" [scrollable]="true" selectionMode="single"
+	    [(selection)]="selectedParty" dataKey="id">
+
+	    		<ng-template pTemplate="colgroup" let-columns>
+			        <colgroup>
+			            <col *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+			        </colgroup>
+			    </ng-template>
+
+			    <ng-template pTemplate="header" let-columns>
+			        <tr>
+			            <th *ngFor="let col of columns">
+			                {{col.header}}
+			            </th>
+			        </tr>
+			    </ng-template>
+			    <ng-template pTemplate="body" let-rowData let-columns="columns">
+			        <tr [pSelectableRow]="rowData">
+			            <td *ngFor="let col of columns">
+			                {{rowData[col.field]}}
+			            </td>
+			        </tr>
+			    </ng-template>
+
+			    <ng-template pTemplate="emptymessage" let-columns>
+			        <tr>
+			            <td [attr.colspan]="columns.length + 1" class="center">
+			                No records found
+			            </td>
+			        </tr>
+			    </ng-template>
+			</p-table>
+			<HR />
+			<div clas="ui-g">
+					<!-- <div class="ui-grid-col-8"> -->
+						<button pButton type="button" icon="pi pi-check" iconPos="left" label="Select"
+						[disabled] = "!selectedParty" class="mr10" (click)="selectParty()" style="width: 90px"></button>
+					
+						<button pButton type="button" label="Back" class="ui-button-raised ui-button-secondary mr20" icon="pi pi-arrow-left" (click)="showResult = false" style="width: 90px"></button>
+						&nbsp;&nbsp;&nbsp;
+						<span class="italic msg-font">(Click on row to select a party)</span>
+					</div>
+				<!-- </div> -->
+		</div>
+		<div *ngIf="!showResult">
+	  		<div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Name :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Name" name="name" [(ngModel)] ="party.name" required/>
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                   <div class="ui-grid-col-1 flabel">
+                        Pan No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Pan No" name="panNo" [(ngModel)] ="party.panNo" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-1 flabel">
+                        CST No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="CST No" name="cstNo" [(ngModel)] ="party.cstNo" />
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1 flabel">
+                        Tan No :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Tan No" name="tanNo" [(ngModel)] ="party.tanNo"/>
+                    </div>
+                  <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-1 flabel">
+                        GST No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="GST No" name="gstNo" [(ngModel)] ="party.gstNo" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                     <div class="ui-grid-col-1 flabel">
+                        HSN Code:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="HSN Code" name="hsnCode" [(ngModel)] ="party.hsnCode" />
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                   
+                    <div class="ui-grid-col-1 flabel">
+                        City :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="City" name="city" [(ngModel)] ="party.city" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-1 flabel">
+                        State :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="State" name="state" [(ngModel)] ="party.state" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-1 flabel">
+                        Country :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Country" name="country" [(ngModel)] ="party.country"/>
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+              
+                    <div class="ui-grid-col-1 flabel">
+                        Tel No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Tel No" name="telNo" [(ngModel)] ="party.telNo" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-1 flabel">
+                        Mob No:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Mob No" name="mobNo" [(ngModel)] ="party.mobNo" />
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                     <div class="ui-grid-col-1 flabel">
+                        Email :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Email" name="email" [(ngModel)] ="party.email"/>
+                    </div>
+                </div>
+                
+                <!-- <div class="ui-grid-row">
+                   
+                   <div class="ui-grid-col-2 flabel">
+                        Pay Term :
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <input pInputText type="text" placeholder="Pay Term" name="payterm" [(ngModel)] ="party.payterm" />
+                    </div>
+                   
+                   
+                </div> -->
+
+                <HR />
+				<div clas="ui-g">
+					<div class="ui-grid-col-8">
+						<button pButton type="submit" label="Search" [disabled]="loading" class="ui-button-raised ui-button-success mr10" style="width: 15%"></button>
+
+						<p-progressSpinner *ngIf="loading" [style]="{width: '23px', height: '23px', 'top': '5px'}" strokeWidth="4" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+
+						<button pButton type="button" label="Reset" (click)="partySearchForm.reset()" class="ui-button-raised ui-button-info reset-btn" style="width: 15%"></button>
+					</div>
+				</div>
+	               
+            </div>
+        </div>
+
+
+	
+</form>

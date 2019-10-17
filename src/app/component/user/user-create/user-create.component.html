@@ -1,0 +1,119 @@
+<div *blockUI="">
+<div class="ui-g title mt5">
+	{{ title }}	
+</div>
+<HR />
+<p-messages [(value)]="msgs"></p-messages>
+<form (submit)="saveUser()" #userForm="ngForm" >
+	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+	  <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Name *:
+	                    </div>
+	                    <div class="ui-grid-col-4">
+	                        <input pInputText type="text" placeholder="Name" name="name" [(ngModel)] ="user.name" required/>
+	                    </div>
+	                    <div class="ui-grid-col-6">
+	                        <p-message severity="error" text="Firstname is required" *ngIf="false"></p-message>
+	                    </div>
+	                </div>
+	                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Email *:
+	                    </div>
+	                    <div class="ui-grid-col-4">
+	                        <input pInputText type="email" name="email" pKeyFilter="email" [(ngModel)] ="user.email" placeholder="Email" required/>
+	                    </div>
+	                    <div class="ui-grid-col-6">
+	                        <p-message severity="error" text="Lastname is required" *ngIf="false"></p-message>
+	                    </div>
+	                </div>
+	                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        User Name *:
+	                    </div>
+	                    <div class="ui-grid-col-4">
+	                        <input pInputText type="text" [pKeyFilter]="blockSpace" name="username" [(ngModel)] ="user.username" placeholder="User Name" required/>
+	                    </div>
+	                    <div class="ui-grid-col-6"></div>
+	                </div>
+	                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Password *:
+	                    </div>
+	                    <div class="ui-grid-col-4">
+	                        <input pPassword type="password" name="password" [(ngModel)] ="user.password" placeholder="Password" showPassword="!isEdit" [disabled]="isEdit" [required]="!isEdit" />
+	                    </div>
+	                    <div class="ui-grid-col-6">
+	                       
+	                    </div>
+	                </div>
+	                <div class="ui-grid-row">
+	                    <div class="ui-grid-col-2 flabel">
+	                        Active :
+	                    </div>
+	                    <div class="ui-grid-col-4 checkbox">
+	                        <p-checkbox name="groupname" name="active" binary="true" [(ngModel)]="user.active"></p-checkbox>
+	                    </div>
+	                    <div class="ui-grid-col-6">
+	                       
+	                    </div>
+	                </div>
+	               
+	            </div>
+
+
+
+	<HR />
+	<div clas="ui-g">
+		<button pButton type="submit" label="Save User" [disabled]="userForm.invalid || loading" class="ui-button-raised ui-button-success mr10"></button>
+		<button pButton type="button" label="Cancel" (click)="navigate('user')" class="ui-button-raised ui-button-secondary"></button>
+
+		<button pButton type="button" *ngIf="!isEdit" label="Reset" (click)="userForm.reset()" class="ui-button-raised ui-button-info reset-btn"></button>
+	</div>
+</form>
+
+<p-card *ngIf="isEdit" class="mt20">
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-4 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		By
+    	</div>
+    	<div class="ui-grid-col-4 p5 bold">
+    		On
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Created
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ user.created_by }}
+    	</div>
+    	<div class="ui-grid-col-5 p5">
+    		{{ user.created_at }}
+    	</div>
+    </div>
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-2 p5">
+    		&nbsp;
+    	</div>
+    	<div class="ui-grid-col-2 p5 bold">
+    		Modified
+    	</div>
+    	<div class="ui-grid-col-2 p5">
+    		{{ user.updated_by }}
+    	</div>
+    	<div class="ui-grid-col-5 p5">
+    		{{ user.updated_at }}
+    	</div>
+    </div>
+</p-card>
+
+
+</div>
